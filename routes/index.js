@@ -9,6 +9,7 @@ router.get('/', function(req, res, next) {
     title: 'Stock Picker APP',
     user: req.user
  });
+ 
 });
 
 //Make a rout for the auth
@@ -16,6 +17,7 @@ router.get('/auth/google', passport.authenticate(
   'google',
   { scope: ['profile', 'email'] }
 ));
+
 
 // for success or fail
 router.get('/oauth2callback', passport.authenticate(
