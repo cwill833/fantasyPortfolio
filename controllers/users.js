@@ -8,5 +8,6 @@ function index(req, res, next) {
     console.log(req.user)
     res.render('users/index', {
         title: 'Portfolios',
+        user: req.user
     });
 }
