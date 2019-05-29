@@ -1,0 +1,23 @@
+<% include ../partials/header %>
+
+<div class="container center">
+    <p>Current portfolio: <%= port.name%></p>
+    <p>Risk Tolerance: <%= port.risk%></p>
+    <p>Initial Investment: $<%=port.inv%></p>
+    <p>Time Frame: <%= port.timeF%></p>
+    <p>Stock in this portfolio: </p>
+    <% if(port.stock.length > 0){ %>
+        <ul>
+       <% port.stock.forEach(s=>{ %>
+            <li><%= s.name %></li>
+       <% }) %>
+    </ul>
+    <% } else { %>
+        <p>Please add a stock</p>
+    <% } %>
+    <a href="/users/index">Back</a>
+    <a href="/users/<%=port._id%>/stock/new">Add a stock</a>
+</div>
+
+  </body>
+</html>

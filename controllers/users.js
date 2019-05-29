@@ -3,15 +3,63 @@ const User = require('../models/user');
 module.exports = {
   index,
   new: newQuestions,
-  create
+  create,
+  show,
+  stock,
+  addstock,
+  sDelete
 };
+
+function sDelete (req, res){
+  let name = req.user.name
+  User.findOne({name: name})
+  .then(person=>{
+    let port = person.portfolio.id(req.params.id)
+  })
+}
+
+function addstock(req, res){
+  let name = req.user.name
+  User.findOne({name: name})
+  .then(person=>{
+    let port = person.portfolio.id(req.params.id)
+    port.stock.push(req.body)
+    person.save(()=>{
+      res.redirect(`/users/${port._id}`)
+    })
+  })
+}
+
+function stock(req, res){
+  let name = req.user.name
+  User.findOne({name: name})
+  .then(person=>{
+    let port = person.portfolio.id(req.params.id)
+    res.render('users/stock', {
+      title: 'Portfolios',
+      user: req.user,
+      port
+    })
+  })
+}
+
+function show(req, res){
+  let name = req.user.name
+  User.findOne({name: name})
+  .then(person=>{
+    let port = person.portfolio.id(req.params.id)
+    res.render('users/show', {
+      title: 'Portfolios',
+      user: req.user,
+      port
+    })
+  })
+}
 
 function create(req, res){
   let name = req.user.name
   User.findOne({name: name})
   .then(person =>{
-    console.log(person)
-    console.log(req.body)
     person.portfolio.push(req.body)
     person.save(()=>{
       res.render('users/showadd',{

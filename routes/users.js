@@ -6,8 +6,11 @@ var userCtr = require('../controllers/users')
 router.get('/index', isLoggedIn, userCtr.index);
 
 router.get('/new', isLoggedIn, userCtr.new)
+router.get('/:id/stock/new', userCtr.stock)
+router.get('/:id', isLoggedIn, userCtr.show)
 
 router.post('/showadd', isLoggedIn, userCtr.create)
+router.post('/:id', isLoggedIn, userCtr.addstock)
 
 
 

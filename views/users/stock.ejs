@@ -1,0 +1,22 @@
+<% include ../partials/header %>
+
+<br>
+<div class="row">
+    <form class="col s12" action="/users/<%=port._id%>" method="POST">
+        <div class="row">
+            <div class="input-field col s12">
+                <input name="name" type="text">
+                <label for="name">Stock Symbol</label>
+            </div>
+        </div>
+        
+        <input type="submit" value="Submit">
+    </form>
+</div>
+
+
+
+
+
+
+<% include ../partials/createFooter %>
