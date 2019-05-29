@@ -10,6 +10,9 @@
         <ul>
        <% port.stock.forEach(s=>{ %>
             <li><%= s.name %></li>
+            <form action="/users/<%= port._id %>/stocks/<%= s._id %>?_method=DELETE" method="POST">
+                <input type="submit" value="X">
+            </form>
        <% }) %>
     </ul>
     <% } else { %>
@@ -17,6 +20,9 @@
     <% } %>
     <a href="/users/index">Back</a>
     <a href="/users/<%=port._id%>/stock/new">Add a stock</a>
+    <form action="/users/<%= port._id %>?_method=DELETE" method="POST">
+        <input type="submit" value="Delete this Portfolio">
+    </form>
 </div>
 
   </body>

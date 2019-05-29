@@ -12,6 +12,9 @@ router.get('/:id', isLoggedIn, userCtr.show)
 router.post('/showadd', isLoggedIn, userCtr.create)
 router.post('/:id', isLoggedIn, userCtr.addstock)
 
+router.delete('/:id/stocks/:idx', isLoggedIn, userCtr.sDelete)
+
+router.delete('/:id', isLoggedIn, userCtr.pDelete)
 
 
 

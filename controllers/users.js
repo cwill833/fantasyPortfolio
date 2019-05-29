@@ -7,14 +7,27 @@ module.exports = {
   show,
   stock,
   addstock,
-  sDelete
+  sDelete,
+  pDelete
 };
+
+function pDelete(req, res){
+  let name = req.user.name
+  User.findOne({name: name})
+  .then(person=>{
+    
+  })
+}
 
 function sDelete (req, res){
   let name = req.user.name
   User.findOne({name: name})
   .then(person=>{
     let port = person.portfolio.id(req.params.id)
+    port.stock.remove(req.params.idx)
+    person.save(()=>{
+      res.redirect(`/users/${port._id}`)
+    })
   })
 }
 
