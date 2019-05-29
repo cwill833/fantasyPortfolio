@@ -5,9 +5,9 @@ var userCtr = require('../controllers/users')
 /* GET users listing. */
 router.get('/index', isLoggedIn, userCtr.index);
 
-router.get('/new', userCtr.new)
+router.get('/new', isLoggedIn, userCtr.new)
 
-
+router.post('/showadd', isLoggedIn, userCtr.create)
 
 
 

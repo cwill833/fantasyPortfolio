@@ -2,12 +2,12 @@
 
 <br>
 <div class="row">
-    <form class="col s12">
+    <form class="col s12" action="/users/showadd" method="POST">
         <div class="row">
-        <div class="input-field col s12">
-            <input name="name" type="text">
-            <label for="name">What would you like to name this portfolio</label>
-        </div>
+            <div class="input-field col s12">
+                <input name="name" type="text">
+                <label for="name">What would you like to name this portfolio</label>
+            </div>
         </div>
         <div class="input-field col s12">
             <select name="risk">
@@ -15,8 +15,23 @@
                 <option value="High">High Risk</option>
                 <option value="Low">Low Risk</option>
             </select>
-            <label>How much risk would you like to take?</label>
+            <label for="risk">How much risk would you like to take?</label>
         </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input name="inv" type="text">
+                <label for="inv">How much would you like to invest</label>
+            </div>
+        </div>
+        <div class="input-field col s12">
+            <select name="timeF">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="Short">Less than one year</option>
+                <option value="Long">More than one year</option>
+            </select>
+            <label for="timeF">How long do you plan on holding this portfolio for?</label>
+        </div>
+        <input type="submit" value="Submit">
     </form>
 </div>
 

@@ -23,9 +23,12 @@ const portfolioSchema = new Schema({
   },
   timeF: {
     type: String,
-    enum: ['Short Term', 'Long Term']
+    enum: ['Short', 'Long']
   },
-  inv: Number,
+  inv: {
+    type: Number,
+    default: 0,
+  },
   stock: [stockSchema]
 }, {
   timestamps: true
