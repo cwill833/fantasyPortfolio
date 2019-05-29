@@ -15,7 +15,10 @@ function pDelete(req, res){
   let name = req.user.name
   User.findOne({name: name})
   .then(person=>{
-    
+    person.portfolio.remove(req.params.id)
+    person.save(()=>{
+      res.redirect(`/users/index`)
+    })
   })
 }
 
