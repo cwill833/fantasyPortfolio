@@ -1,0 +1,44 @@
+<% include ../partials/header %>
+
+<br>
+<div class="row">
+    <form class="col s12" action="/users/<%=port._id%>?_method=PUT"  method="POST">
+        <div class="row">
+            <div class="input-field col s12">
+                <input name="name" type="text" value="<%=port.name%>">
+                <label for="name">What would you like to re-name this portfolio to</label>
+            </div>
+        </div>
+        <div class="input-field col s12">
+            <select name="risk" value="<%= port.risk%>">
+                <option value="" disabled>Choose your option</option>
+                <option value="High">High Risk</option>
+                <option value="Low">Low Risk</option>
+            </select>
+            <label for="risk">Would you like to change your risk tolerance</label>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input name="inv" type="text" value="<%=port.inv%>">
+                <label for="inv">How much would you like to invest</label>
+            </div>
+        </div>
+        <div class="input-field col s12">
+            <select name="timeF" value="port.timeF">
+                <option value="" disabled>Choose your option</option>
+                <option value="Short">Less than one year</option>
+                <option value="Long">More than one year</option>
+            </select>
+            <label for="timeF">Would you like to change your time horrizon?</label>
+        </div>
+        <input type="submit" value="Save">
+    </form>
+    <a href="/users/index">Back</a>
+</div>
+
+
+
+
+
+
+<% include ../partials/createFooter %>

@@ -19,6 +19,7 @@
         <p>Please add a stock</p>
     <% } %>
     <a href="/users/index">Back</a>
+    <a href="/users/<%=port._id%>/edit">Edit this Portfolio</a>
     <a href="/users/<%=port._id%>/stock/new">Add a stock</a>
     <form action="/users/<%= port._id %>?_method=DELETE" method="POST">
         <input type="submit" value="Delete this Portfolio">

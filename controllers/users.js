@@ -8,8 +8,35 @@ module.exports = {
   stock,
   addstock,
   sDelete,
-  pDelete
+  pDelete,
+  pEdit,
+  save
 };
+
+function save(req, res){
+  let name = req.user.name
+  User.findOne({name: name})
+  .then(person=>{
+    let port = person.portfolio.id(req.params.id)
+    port.set(req.body)
+    person.save(()=>{
+      res.redirect(`/users/${req.params.id}`)
+    })
+  })
+}
+
+function pEdit(req, res){
+  let name = req.user.name
+  User.findOne({name: name})
+  .then(person=>{
+    let port = person.portfolio.id(req.params.id)
+    res.render('users/edit', {
+      port,
+      user: req.user,
+      title: 'Portfolios'
+    })
+  })
+}
 
 function pDelete(req, res){
   let name = req.user.name
@@ -61,6 +88,7 @@ function stock(req, res){
 
 function show(req, res){
   let name = req.user.name
+  //add request here
   User.findOne({name: name})
   .then(person=>{
     let port = person.portfolio.id(req.params.id)
