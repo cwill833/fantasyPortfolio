@@ -6,7 +6,11 @@ const stockSchema = new Schema({
   name: String,
   oPrice: Number,
   yClose: Number,
-  volume: Number
+  volume: Number,
+  date: {
+    type: Date,
+    default: Date.now
+},
 }, {
   timestamps: true
 })

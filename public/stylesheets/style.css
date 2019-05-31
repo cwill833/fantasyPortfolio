@@ -1,3 +1,55 @@
 nav {
-  background-color: #21782C;
+  background-color: #00BBD4;
+}
+
+
+body{
+  background-color: #8D8882;
+}
+
+span{
+  font-weight: bolder
+}
+
+a{
+  color: #00BBD4
+}
+
+.input-field>label {
+  color: #00BBD4;
+  font-size: 1.3em;
+}
+
+.hero {
+  width: 100%;
+  height: 100vh;
+  margin-top: -42px;
+  background: url(https://i.imgur.com/abdcdLJ.jpg?1) top center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative; 
+}
+
+
+#btn{
+  background-color: red;
+  color: white;
+}
+
+#block-edit{
+  margin-top: 35px;
+  margin-bottom: 20px;
+}
+
+#move{
+  margin-left: -12px;
+}
+
+#middle{
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+#px{
+  margin-left: 11px;
 }

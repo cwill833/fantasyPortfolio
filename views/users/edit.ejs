@@ -9,7 +9,7 @@
                 <label for="name">What would you like to re-name this portfolio to</label>
             </div>
         </div>
-        <div class="input-field col s12">
+        <div id="move" class="input-field col s12">
             <select name="risk" value="<%= port.risk%>">
                 <option value="" disabled>Choose your option</option>
                 <option value="High">High Risk</option>
@@ -23,7 +23,7 @@
                 <label for="inv">How much would you like to invest</label>
             </div>
         </div>
-        <div class="input-field col s12">
+        <div id="move" class="input-field col s12">
             <select name="timeF" value="port.timeF">
                 <option value="" disabled>Choose your option</option>
                 <option value="Short">Less than one year</option>
@@ -31,10 +31,10 @@
             </select>
             <label for="timeF">Would you like to change your time horrizon?</label>
         </div>
-        <input type="submit" value="Save">
+        <input class="btn" type="submit" value="Save">
     </form>
-    <a href="/users/index">Back</a>
 </div>
+<a  id="px" href="/users/index">Back</a>
 
 
 

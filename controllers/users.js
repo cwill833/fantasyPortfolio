@@ -1,4 +1,7 @@
 const User = require('../models/user');
+const request = require('request')
+const stockAPI = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol='
+const k = process.env.ALPHA_TOKEN
 
 module.exports = {
   index,
@@ -63,12 +66,27 @@ function sDelete (req, res){
 
 function addstock(req, res){
   let name = req.user.name
-  User.findOne({name: name})
-  .then(person=>{
-    let port = person.portfolio.id(req.params.id)
-    port.stock.push(req.body)
-    person.save(()=>{
-      res.redirect(`/users/${port._id}`)
+  request(stockAPI + req.body.name + `&apikey=` + k, (err, responce, body)=>{
+    const sData = JSON.parse(body)
+    const symbol = sData['Global Quote']['01. symbol']
+    const open = sData['Global Quote']['02. open']
+    const yestClose = sData['Global Quote']['08. previous close']
+    const vol = sData['Global Quote']['06. volume']
+    User.findOne({name: name})
+    .then(person=>{
+      let port = person.portfolio.id(req.params.id)
+      port.stock.push(req.body)
+      port.stock[port.stock.length - 1].name = symbol
+      port.stock[port.stock.length - 1].oPrice = open
+      port.stock[port.stock.length - 1].yClose = yestClose
+      port.stock[port.stock.length - 1].volume = vol
+      person.save(()=>{
+        res.render(`users/show`, {
+          title: 'Portfolios',
+          user: req.user,
+          port,
+        })
+      })
     })
   })
 }
@@ -88,14 +106,14 @@ function stock(req, res){
 
 function show(req, res){
   let name = req.user.name
-  //add request here
   User.findOne({name: name})
   .then(person=>{
     let port = person.portfolio.id(req.params.id)
     res.render('users/show', {
       title: 'Portfolios',
       user: req.user,
-      port
+      port,
+      sData: false
     })
   })
 }
@@ -121,7 +139,7 @@ function index(req, res, next) {
   User.findOne({name: name})
     .then(person=>{
       res.render('users/index', {
-        title: 'Portfolios',
+        title: 'portfolios',
         user: req.user,
         person
       })
