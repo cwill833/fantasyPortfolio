@@ -44,7 +44,7 @@ Once logged in you are able to add a portfolio which will bring you to the quest
 
 Once you add a portfolio, an info page of what you just added will pop up then you can click back to see the portfolio.  
 
-![Portfolio Show](https://i.imgur.com/eP50shi.png)  
+![Portfolio Show](https://i.imgur.com/hTmOBEK.png)  
 
 Now you can add stock with the investment amount of your choosing and it will render with live data.  
 
