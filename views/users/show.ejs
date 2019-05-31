@@ -32,7 +32,7 @@
                     <td><p class="center"><%= Math.floor(s.investment / s.oPrice) %></p></td>
                     <td><p class="center">$<%= s.investment %></p></td>
                     <td class="center"><form action="/users/<%= port._id %>/stocks/<%= s._id %>?_method=DELETE" method="POST">
-                        <input id="btn" type="submit" value="X">
+                        <input id="btn" type="submit" value="SELL">
                     </form></td>
                   </tr>
                 <% }) %>
@@ -47,7 +47,7 @@
     <div id="block-edit" class="container">
         <a href="/users/index">Back</a>
         <a id="middle" href="/users/<%=port._id%>/edit">Edit this Portfolio</a>
-        <a href="/users/<%=port._id%>/stock/new">Add a stock</a>
+        <a href="/users/<%=port._id%>/stock/new">Buy a stock</a>
     </div>
         <form action="/users/<%= port._id %>?_method=DELETE" method="POST">
             <input id="btn" class="btn" type="submit" value="Delete this Portfolio">
