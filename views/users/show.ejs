@@ -4,6 +4,7 @@
     <p>Current portfolio: <span><%= port.name%></p></span>
     <p>Risk Tolerance: <span><%= port.risk%></p></span>
     <p>Initial Investment: <span>$<%=port.inv%></p></span>
+    <p>Remaining Capital: <span>$<%= (parseInt(port.inv) - parseInt(port.usedC))%></p></span>
     <p>Time Frame: <span><%= port.timeF%></p></span>
     <p>Stock in this portfolio: </p>
 <% if (port.stock.length > 0){ %>
@@ -15,6 +16,8 @@
                 <th><p class="center">Yesterday Close</p></th>
                 <th><p class="center">Volume</p></th>
                 <th><p class="center">Date Added</p></th>
+                <th><p class="center">Shares</p></th>
+                <th><p class="center">investment</p></th>
                 <th><p class="center">Delete Stock</p></th>
               </tr>
             </thead>
@@ -26,6 +29,8 @@
                     <td><p class="center">$<%= s.yClose %></p></td>
                     <td><p class="center"><%= s.volume %></p></td>
                     <td><p class="center"><%= new Intl.DateTimeFormat('en-US', {month: 'long'}).format(s.date)%> <%= s.date.getDate()%>, <%= s.date.getFullYear()%></p></td>
+                    <td><p class="center"><%= Math.floor(s.investment / s.oPrice) %></p></td>
+                    <td><p class="center">$<%= s.investment %></p></td>
                     <td class="center"><form action="/users/<%= port._id %>/stocks/<%= s._id %>?_method=DELETE" method="POST">
                         <input id="btn" type="submit" value="X">
                     </form></td>

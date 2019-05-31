@@ -2,11 +2,13 @@ const mongoose = require('mongoose')
 // const Portfolio = require('./portfolio')
 const Schema = mongoose.Schema
 
+
 const stockSchema = new Schema({
   name: String,
   oPrice: Number,
   yClose: Number,
   volume: Number,
+  investment: Number,
   date: {
     type: Date,
     default: Date.now
@@ -18,8 +20,8 @@ const stockSchema = new Schema({
 const portfolioSchema = new Schema({
   name: String,
   date: {
-      type: Date,
-      default: Date.now
+    type: Date,
+    default: Date.now
   },
   risk: {
     type: String,
@@ -32,6 +34,10 @@ const portfolioSchema = new Schema({
   inv: {
     type: Number,
     default: 0,
+  },
+  usedC: {
+    type: Number,
+    default: 0
   },
   stock: [stockSchema]
 }, {

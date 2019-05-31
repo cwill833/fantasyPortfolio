@@ -57,6 +57,8 @@ function sDelete (req, res){
   User.findOne({name: name})
   .then(person=>{
     let port = person.portfolio.id(req.params.id)
+    let found = port.stock.id(req.params.idx)
+    port.usedC -= parseInt(found.investment)
     port.stock.remove(req.params.idx)
     person.save(()=>{
       res.redirect(`/users/${port._id}`)
@@ -76,6 +78,7 @@ function addstock(req, res){
     .then(person=>{
       let port = person.portfolio.id(req.params.id)
       port.stock.push(req.body)
+      port.usedC += parseInt(req.body.investment)
       port.stock[port.stock.length - 1].name = symbol
       port.stock[port.stock.length - 1].oPrice = open
       port.stock[port.stock.length - 1].yClose = yestClose
