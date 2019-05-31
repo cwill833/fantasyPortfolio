@@ -48,7 +48,9 @@ Once you add a portfolio, an info page of what you just added will pop up then y
 
 Now you can add stock with the investment amount of your choosing and it will render with live data.  
 
-![Portfolio Show w/ stock](https://i.imgur.com/c1JRScF.png)
+![add stock](https://i.imgur.com/c1JRScF.png)  
+
+![Portfolio w/ stock](https://i.imgur.com/eP50shi.png)  
 
 For this project I incorporated:
 
@@ -57,6 +59,8 @@ For this project I incorporated:
  * CSS
  * Express.js w/ generator ejs
  * Node.js
+ * mongoDB
+ * mongoose
  * Materialize
  * a hole bunch of google/MDN/CSS Tricks :)
 
