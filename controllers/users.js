@@ -59,7 +59,7 @@ function sDelete (req, res){
   .then(person=>{
     let port = person.portfolio.id(req.params.id)
     let found = port.stock.id(req.params.idx)
-    port.usedC -= parseInt(found.investment)
+    port.usedC -= parseFloat(found.investment).toFixed(2)
     port.stock.remove(req.params.idx)
     person.save(()=>{
       res.redirect(`/users/${port._id}`)
@@ -69,23 +69,19 @@ function sDelete (req, res){
 
 function addstock(req, res){
   let name = req.user.name
-  
   request(stockAPI + req.body.name + `&apikey=` + k, (err, responce, body)=>{
     const sData = JSON.parse(body)
-    const symbol = sData['Global Quote']['01. symbol']
-    const open = sData['Global Quote']['02. open']
-    const yestClose = sData['Global Quote']['08. previous close']
-    const vol = sData['Global Quote']['06. volume']
+    req.body.name = sData['Global Quote']['01. symbol']
+    req.body.purPrice = sData['Global Quote']['05. price']
+    req.body.yClose = sData['Global Quote']['08. previous close']
+    req.body.volume = sData['Global Quote']['06. volume']
+    let amountSpent = parseFloat(req.body.purPrice * Math.floor(req.body.investment / req.body.purPrice).toFixed(2))
+    req.body.investment = amountSpent
     User.findOne({name: name})
     .then(person=>{
       let port = person.portfolio.id(req.params.id)
       port.stock.push(req.body)
-      let lastStock = port.stock[port.stock.length - 1]
-      port.usedC += parseInt(req.body.investment)
-      lastStock.name = symbol
-      lastStock.oPrice = open
-      lastStock.yClose = yestClose
-      lastStock.volume = vol
+      port.usedC += amountSpent
       person.save(()=>{
         res.render(`users/show`, {
           title: 'Portfolios',

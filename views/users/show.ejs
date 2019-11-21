@@ -4,7 +4,7 @@
   <p>Current portfolio: <span><%= port.name%></p></span>
   <p>Risk Tolerance: <span><%= port.risk%></p></span>
   <p>Initial Investment: <span>$<%=port.inv%></p></span>
-  <p>Remaining Capital: <span>$<%= (parseInt(port.inv) - parseInt(port.usedC))%></p></span>
+  <p>Remaining Capital: <span>$<%= (parseFloat(port.inv) - parseFloat(port.usedC))%></p></span>
   <p>Time Frame: <span><%= port.timeF%></p></span>
   <p>Stock in this portfolio: </p>
   <% if (port.stock.length > 0){ %>
@@ -12,7 +12,7 @@
       <thead class="center">
         <tr>
           <th><p class="center">Symbol</p></th>
-          <th><p class="center">Opening Price</p></th>
+          <th><p class="center">Purchase Price</p></th>
           <th><p class="center">Yesterday Close</p></th>
           <th><p class="center">Volume</p></th>
           <th><p class="center">Purhcase Date</p></th>
@@ -25,12 +25,12 @@
       <% port.stock.forEach(s=>{ %>
         <tr>
           <td><p class="center"><%= s.name %></p></td>
-          <td><p class="center">$<%= s.oPrice %></p></td>
+          <td><p class="center">$<%= s.purPrice %></p></td>
           <td><p class="center">$<%= s.yClose %></p></td>
           <td><p class="center"><%= s.volume %></p></td>
           <td><p class="center"><%= s.date.toDateString() %></p></td>
-          <td><p class="center"><%= Math.floor(s.investment / s.oPrice) %></p></td>
-          <td><p class="center">$<%= parseFloat(s.oPrice * Math.floor(s.investment / s.oPrice)).toFixed(2) %></p></td>
+          <td><p class="center"><%= Math.floor(s.investment / s.purPrice) %></p></td>
+          <td><p class="center">$<%= (s.purPrice * Math.floor(s.investment / s.purPrice)).toFixed(2) %></p></td>
           <td class="center"><form action="/users/<%= port._id %>/stocks/<%= s._id %>?_method=DELETE" method="POST">
               <input id="btn" type="submit" value="SELL">
           </form></td>
