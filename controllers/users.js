@@ -16,7 +16,7 @@ module.exports = {
   save
 };
 
-
+// saves portfolio to db
 function save(req, res){
   let name = req.user.name
   User.findOne({name: name})
@@ -29,6 +29,7 @@ function save(req, res){
   })
 }
 
+// edit currently selected portfolio
 function pEdit(req, res){
   let name = req.user.name
   User.findOne({name: name})
@@ -42,6 +43,7 @@ function pEdit(req, res){
   })
 }
 
+// delete portfolio
 function pDelete(req, res){
   let name = req.user.name
   User.findOne({name: name})
@@ -52,7 +54,7 @@ function pDelete(req, res){
     })
   })
 }
-
+// delete stock and does math to determine how much capital to put back
 function sDelete (req, res){
   let name = req.user.name
   User.findOne({name: name})
@@ -67,13 +69,14 @@ function sDelete (req, res){
   })
 }
 
+// searches stock in API request then creates new stock and subtracts initial investment from money pool
 function addstock(req, res){
   let name = req.user.name
   request(stockAPI + req.body.name + `&apikey=` + k, (err, responce, body)=>{
     const sData = JSON.parse(body)
     req.body.name = sData['Global Quote']['01. symbol']
     req.body.purPrice = sData['Global Quote']['05. price']
-    req.body.yClose = sData['Global Quote']['08. previous close']
+    req.body.lastTrade = sData['Global Quote']['05. price']
     req.body.volume = sData['Global Quote']['06. volume']
     const amountSpent = parseFloat(req.body.purPrice * Math.floor(req.body.investment / req.body.purPrice).toFixed(2))
     req.body.investment = amountSpent
@@ -93,6 +96,7 @@ function addstock(req, res){
   })
 }
 
+// brings up stock purchase form
 function stock(req, res){
   let name = req.user.name
   User.findOne({name: name})
@@ -106,6 +110,7 @@ function stock(req, res){
   })
 }
 
+// brings up to the selected porfolio
 function show(req, res){
   let name = req.user.name
   User.findOne({name: name})
@@ -114,12 +119,12 @@ function show(req, res){
     res.render('users/show', {
       title: 'Portfolios',
       user: req.user,
-      port,
-      sData: false
+      port
     })
   })
 }
 
+// creates a new portfolio
 function create(req, res){
   let name = req.user.name
   User.findOne({name: name})
@@ -136,6 +141,7 @@ function create(req, res){
   })
 }
 
+// landing page once you log in
 function index(req, res, next) {
   let name = req.user.name
   User.findOne({name: name})
@@ -148,10 +154,10 @@ function index(req, res, next) {
     });
 }
 
+// brings up questions page to create a portfolio
 function newQuestions(req, res){
   res.render('users/create', {
     user: req.user,
     title: 'Portfolios'
   })
 }
-
