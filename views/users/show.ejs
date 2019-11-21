@@ -14,7 +14,8 @@
           <th><p class="center">Symbol</p></th>
           <th><p class="center">Purchase Price</p></th>
           <th><p class="center">Last Trade</p></th>
-          <th><p class="center">Volume</p></th>
+          <th><p class="center">Performance</p></th>
+          <th><p class="center">Gain/Loss</p></th>
           <th><p class="center">Purhcase Date</p></th>
           <th><p class="center">Shares</p></th>
           <th><p class="center">Initial Investment</p></th>
@@ -26,8 +27,9 @@
         <tr>
           <td><p class="center"><%= s.name %></p></td>
           <td><p class="center">$<%= s.purPrice %></p></td>
-          <td><p class="center">$<%= s.lastTrade %></p></td>
-          <td><p class="center"><%= s.volume %></p></td>
+          <td><p class="center">$<%= (s.lastTrade).toFixed(2) %></p></td>
+          <td><p class="center"><%= (s.lastTrade - s.purPrice).toFixed(2) %></p></td>
+          <td><p class="center">$<%= ((s.lastTrade - s.purPrice) *  Math.floor(s.investment / s.purPrice)).toFixed(2)%></p></td>
           <td><p class="center"><%= s.date.toDateString() %></p></td>
           <td><p class="center"><%= Math.floor(s.investment / s.purPrice) %></p></td>
           <td><p class="center">$<%= (s.purPrice * Math.floor(s.investment / s.purPrice)).toFixed(2) %></p></td>
