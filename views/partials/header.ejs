@@ -3,8 +3,6 @@
 
 <head>
   <title>Fantasy Portfolio</title>
-  <!-- Google Icon Fonts used by Materialize -->
-  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- Materialize CSS Framework -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel="stylesheet" href="stylesheets/style.css" />
@@ -19,11 +17,11 @@
         <a href="/users/index" class="brand-logo left"><img src="https://i.imgur.com/WYsDJfm.png" alt="fantasy portfolio logo" height="60" width="200"></a>
         <ul class="right">
           <li>
-            <% if (user) { %>
-                <a href="/logout">Log Out</a>
-            <% } else { %>
-                <a href="/auth/google">Login with Google</a>
-            <% } %>
+          <% if (user) { %>
+              <a href="/logout">Log Out</a>
+          <% } else { %>
+              <a href="/auth/google">Login with Google</a>
+          <% } %>
           </li>
         </ul>
       </div>

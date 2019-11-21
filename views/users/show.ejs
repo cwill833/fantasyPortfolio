@@ -1,57 +1,57 @@
 <% include ../partials/header %>
 
 <div class="container center">
-    <p>Current portfolio: <span><%= port.name%></p></span>
-    <p>Risk Tolerance: <span><%= port.risk%></p></span>
-    <p>Initial Investment: <span>$<%=port.inv%></p></span>
-    <p>Remaining Capital: <span>$<%= (parseInt(port.inv) - parseInt(port.usedC))%></p></span>
-    <p>Time Frame: <span><%= port.timeF%></p></span>
-    <p>Stock in this portfolio: </p>
-<% if (port.stock.length > 0){ %>
+  <p>Current portfolio: <span><%= port.name%></p></span>
+  <p>Risk Tolerance: <span><%= port.risk%></p></span>
+  <p>Initial Investment: <span>$<%=port.inv%></p></span>
+  <p>Remaining Capital: <span>$<%= (parseInt(port.inv) - parseInt(port.usedC))%></p></span>
+  <p>Time Frame: <span><%= port.timeF%></p></span>
+  <p>Stock in this portfolio: </p>
+  <% if (port.stock.length > 0){ %>
     <table class="highlight center">
-            <thead class="center">
-              <tr>
-                <th><p class="center">Symbol</p></th>
-                <th><p class="center">Opening Price</p></th>
-                <th><p class="center">Yesterday Close</p></th>
-                <th><p class="center">Volume</p></th>
-                <th><p class="center">Date Added</p></th>
-                <th><p class="center">Shares</p></th>
-                <th><p class="center">investment</p></th>
-                <th><p class="center">Delete Stock</p></th>
-              </tr>
-            </thead>
-            <tbody center>
-                <% port.stock.forEach(s=>{ %>
-                  <tr>
-                    <td><p class="center"><%= s.name %></p></td>
-                    <td><p class="center">$<%= s.oPrice %></p></td>
-                    <td><p class="center">$<%= s.yClose %></p></td>
-                    <td><p class="center"><%= s.volume %></p></td>
-                    <td><p class="center"><%= new Intl.DateTimeFormat('en-US', {month: 'long'}).format(s.date)%> <%= s.date.getDate()%>, <%= s.date.getFullYear()%></p></td>
-                    <td><p class="center"><%= Math.floor(s.investment / s.oPrice) %></p></td>
-                    <td><p class="center">$<%= s.investment %></p></td>
-                    <td class="center"><form action="/users/<%= port._id %>/stocks/<%= s._id %>?_method=DELETE" method="POST">
-                        <input id="btn" type="submit" value="SELL">
-                    </form></td>
-                  </tr>
-                <% }) %>
-              </tbody>
-            </table>
-            <% } else { %>
-                <div class="divider"></div>
-                <div class="section center">
-                  <h5>No stocks yet! Add one!</h5>
-                </div>
-            <% } %>
-    <div id="block-edit" class="container">
-        <a href="/users/index">Back</a>
-        <a id="middle" href="/users/<%=port._id%>/edit">Edit this Portfolio</a>
-        <a href="/users/<%=port._id%>/stock/new">Buy a stock</a>
+      <thead class="center">
+        <tr>
+          <th><p class="center">Symbol</p></th>
+          <th><p class="center">Opening Price</p></th>
+          <th><p class="center">Yesterday Close</p></th>
+          <th><p class="center">Volume</p></th>
+          <th><p class="center">Purhcase Date</p></th>
+          <th><p class="center">Shares</p></th>
+          <th><p class="center">Initial Investment</p></th>
+          <th><p class="center">Sell Stock</p></th>
+        </tr>
+      </thead>
+      <tbody center>
+      <% port.stock.forEach(s=>{ %>
+        <tr>
+          <td><p class="center"><%= s.name %></p></td>
+          <td><p class="center">$<%= s.oPrice %></p></td>
+          <td><p class="center">$<%= s.yClose %></p></td>
+          <td><p class="center"><%= s.volume %></p></td>
+          <td><p class="center"><%= s.date.toDateString() %></p></td>
+          <td><p class="center"><%= Math.floor(s.investment / s.oPrice) %></p></td>
+          <td><p class="center">$<%= s.investment %></p></td>
+          <td class="center"><form action="/users/<%= port._id %>/stocks/<%= s._id %>?_method=DELETE" method="POST">
+              <input id="btn" type="submit" value="SELL">
+          </form></td>
+        </tr>
+      <% }) %>
+      </tbody>
+    </table>
+  <% } else { %>
+    <div class="divider"></div>
+    <div class="section center">
+      <h5>No stocks yet! Add one!</h5>
     </div>
-        <form action="/users/<%= port._id %>?_method=DELETE" method="POST">
-            <input id="btn" class="btn" type="submit" value="Delete this Portfolio">
-        </form>
+  <% } %>
+    <div id="block-edit" class="container">
+      <a href="/users/index">Back</a>
+      <a id="middle" href="/users/<%=port._id%>/edit">Edit this Portfolio</a>
+      <a href="/users/<%=port._id%>/stock/new">Buy a stock</a>
+    </div>
+    <form action="/users/<%= port._id %>?_method=DELETE" method="POST">
+        <input id="btn" class="btn" type="submit" value="Delete this Portfolio">
+    </form>
 </div>
 
 <% include ../partials/createFooter %>

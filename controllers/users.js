@@ -68,6 +68,7 @@ function sDelete (req, res){
 
 function addstock(req, res){
   let name = req.user.name
+  
   request(stockAPI + req.body.name + `&apikey=` + k, (err, responce, body)=>{
     const sData = JSON.parse(body)
     const symbol = sData['Global Quote']['01. symbol']
@@ -78,16 +79,17 @@ function addstock(req, res){
     .then(person=>{
       let port = person.portfolio.id(req.params.id)
       port.stock.push(req.body)
+      let lastStock = port.stock[port.stock.length - 1]
       port.usedC += parseInt(req.body.investment)
-      port.stock[port.stock.length - 1].name = symbol
-      port.stock[port.stock.length - 1].oPrice = open
-      port.stock[port.stock.length - 1].yClose = yestClose
-      port.stock[port.stock.length - 1].volume = vol
+      lastStock.name = symbol
+      lastStock.oPrice = open
+      lastStock.yClose = yestClose
+      lastStock.volume = vol
       person.save(()=>{
         res.render(`users/show`, {
           title: 'Portfolios',
           user: req.user,
-          port,
+          port
         })
       })
     })
@@ -150,7 +152,6 @@ function index(req, res, next) {
 }
 
 function newQuestions(req, res){
-  console.log(req.user)
   res.render('users/create', {
     user: req.user,
     title: 'Portfolios'

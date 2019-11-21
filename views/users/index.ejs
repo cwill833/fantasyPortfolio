@@ -3,38 +3,38 @@
   <h3 class="center-align">Hello, <%=user.name%> and welcome to your <%= title %>!</h3>
   <% if (user.portfolio.length > 0){ %>
   <h5 class="center-align">Below are the current portfolios we have created together</h5>
-    <table class="container highlight">
-      <thead>
+  <table class="container highlight">
+    <thead>
+      <tr>
+        <th class="center">Name of Portfolio</th>
+        <th class="center">Time Horrizon</th>
+        <th class="center">Risk Tolerance</th>
+        <th class="center">Initial Investment</th>
+        <th class="center">Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% user.portfolio.forEach(p=>{ %>
         <tr>
-          <th class="center">Name of Portfolio</th>
-          <th class="center">Time Horrizon</th>
-          <th class="center">Risk Tolerance</th>
-          <th class="center">Initial Investment</th>
-          <th class="center">Details</th>
+          <td class="center"><%= p.name %></td>
+          <td class="center"><%= p.timeF %></td>
+          <td class="center"><%= p.risk %></td>
+          <td class="center">$<%= p.inv %></td>
+          <td class="center"><a href="/users/<%= p._id %>" class="btn-floating btn-large cyan pulse"><i class="material-icons">edit</i></a></td>
         </tr>
-      </thead>
-      <tbody>
-          <% user.portfolio.forEach(p=>{ %>
-            <tr>
-              <td class="center"><%= p.name %></td>
-              <td class="center"><%= p.timeF %></td>
-              <td class="center"><%= p.risk %></td>
-              <td class="center">$<%= p.inv %></td>
-              <td class="center"><a href="/users/<%= p._id %>" class="btn-floating btn-large cyan pulse"><i class="material-icons">edit</i></a></td>
-            </tr>
-          <% }) %>
-        </tbody>
-      </table>
-      <% } else { %>
-        <div class="divider"></div>
-        <div class="section center">
-          <h5>Make a portfolio to see it here!</h5>
-        </div>
-      <% } %>
-      <h5 class="center">When you are ready to create another portfolio...</h5>
-      <form action="/users/new" method="GET" class="container center">
-        <input type="submit" class="btn" value="Click Here!">
-      </form>
+      <% }) %>
+    </tbody>
+  </table>
+  <% } else { %>
+    <div class="divider"></div>
+    <div class="section center">
+      <h5>Make a portfolio to see it here!</h5>
+    </div>
+  <% } %>
+  <h5 class="center">When you are ready to create another portfolio...</h5>
+  <form action="/users/new" method="GET" class="container center">
+    <input type="submit" class="btn" value="Click Here!">
+  </form>
             
       
 <% include ../partials/createFooter %>
