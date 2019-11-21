@@ -1,7 +1,5 @@
 const mongoose = require('mongoose')
-// const Portfolio = require('./portfolio')
 const Schema = mongoose.Schema
-
 
 const stockSchema = new Schema({
   name: String,
@@ -11,7 +9,7 @@ const stockSchema = new Schema({
   investment: Number,
   date: {
     type: Date,
-    default: Date.now
+    default: new Date
 },
 }, {
   timestamps: true
