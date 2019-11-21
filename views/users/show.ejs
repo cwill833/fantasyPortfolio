@@ -20,6 +20,7 @@
           <th><p class="center">Shares</p></th>
           <th><p class="center">Initial Investment</p></th>
           <th><p class="center">Sell Stock</p></th>
+          <th><p class="center">Refresh last trade</p></th>
         </tr>
       </thead>
       <tbody center>
@@ -33,9 +34,20 @@
           <td><p class="center"><%= s.date.toDateString() %></p></td>
           <td><p class="center"><%= Math.floor(s.investment / s.purPrice) %></p></td>
           <td><p class="center">$<%= (s.purPrice * Math.floor(s.investment / s.purPrice)).toFixed(2) %></p></td>
-          <td class="center"><form action="/users/<%= port._id %>/stocks/<%= s._id %>?_method=DELETE" method="POST">
+
+          <td class="center">
+            <form action="/users/<%= port._id %>/stocks/<%= s._id %>?_method=DELETE" method="POST">
               <input id="btn" type="submit" value="SELL">
-          </form></td>
+            </form>
+          </td>
+          
+          <td class="center">
+            <form action="/refresh" method="POST">
+              <input type="hidden" name="stock" value="<%= s._id %>">
+              <input type="hidden" name="port" value="<%= port._id %>">
+              <input id="btn" type="submit" value="SELL">
+            </form>
+          </td>
         </tr>
       <% }) %>
       </tbody>

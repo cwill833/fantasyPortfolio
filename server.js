@@ -13,6 +13,7 @@ require('./config/passport');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const refreshRouter = require('./routes/refresh');
 
 const app = express();
 
@@ -41,6 +42,7 @@ app.use(methodOverride('_method'))
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/refresh', refreshRouter)
 
 
 

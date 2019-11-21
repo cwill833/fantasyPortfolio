@@ -13,8 +13,25 @@ module.exports = {
   sDelete,
   pDelete,
   pEdit,
-  save
+  save,
+  refreash
 };
+
+// get last trade for stock
+function refreash(req, res){
+  let name = req.user.name
+  User.findOne({name: name})
+  .then(person=>{
+    let port = person.portfolio.id(req.body.port)
+    let found = port.stock.id(req.body.stock)
+    console.log(port, found)
+    // port.usedC -= parseFloat(found.investment).toFixed(2)
+    // port.stock.remove(req.params.idx)
+    // person.save(()=>{
+      res.redirect(`/users/${port._id}`)
+    // })
+  })
+}
 
 // saves portfolio to db
 function save(req, res){
