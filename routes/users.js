@@ -1,6 +1,6 @@
-var express = require('express');
-var router = express.Router();
-var userCtr = require('../controllers/users')
+const express = require('express');
+const router = express.Router();
+const userCtr = require('../controllers/users')
 
 /* GET users listing. */
 router.get('/index', isLoggedIn, userCtr.index);

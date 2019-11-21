@@ -1,6 +1,6 @@
 const passport = require('passport')
-var GoogleStrategy = require('passport-google-oauth20').Strategy;
-var User = require('../models/user')
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const User = require('../models/user')
 
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
@@ -16,7 +16,7 @@ passport.use(new GoogleStrategy({
                 cb(null, user);
             }else{
                 //new user
-                var newUser = new User({
+                const newUser = new User({
                     name: profile.displayName,
                     email: profile.emails[0].value,
                     googleId: profile.id

@@ -75,7 +75,7 @@ function addstock(req, res){
     req.body.purPrice = sData['Global Quote']['05. price']
     req.body.yClose = sData['Global Quote']['08. previous close']
     req.body.volume = sData['Global Quote']['06. volume']
-    let amountSpent = parseFloat(req.body.purPrice * Math.floor(req.body.investment / req.body.purPrice).toFixed(2))
+    const amountSpent = parseFloat(req.body.purPrice * Math.floor(req.body.investment / req.body.purPrice).toFixed(2))
     req.body.investment = amountSpent
     User.findOne({name: name})
     .then(person=>{
