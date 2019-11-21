@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 const stockSchema = new Schema({
   name: String,
   purPrice: Number,
-  yClose: Number,
+  lastTrade: Number,
   volume: Number,
   investment: Number,
   date: {
