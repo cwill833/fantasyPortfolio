@@ -4,7 +4,7 @@
   <p>Current portfolio: <span><%= port.name%></p></span>
   <p>Risk Tolerance: <span><%= port.risk%></p></span>
   <p>Initial Investment: <span>$<%=port.inv%></p></span>
-  <p>Remaining Capital: <span>$<%= (parseFloat(port.inv) - parseFloat(port.usedC))%></p></span>
+  <p>Remaining Capital: <span>$<%= (parseFloat(port.inv) - parseFloat(port.usedC)).toFixed(2) %></p></span>
   <p>Time Frame: <span><%= port.timeF%></p></span>
   <p>Stock in this portfolio: </p>
   <% if (port.stock.length > 0){ %>
@@ -34,8 +34,8 @@
           <td><p class="center">$<%= ((s.lastTrade - s.purPrice) *  Math.floor(s.investment / s.purPrice)).toFixed(2)%></p></td>
           <td><p class="center"><%= s.date.toDateString() %></p></td>
           <td><p class="center"><%= Math.floor(s.investment / s.purPrice) %></p></td>
-          <td><p class="center"><%= Math.floor(s.investment / s.purPrice) %></p></td>
           <td><p class="center">$<%= (s.purPrice * Math.floor(s.investment / s.purPrice)).toFixed(2) %></p></td>
+          <td><p class="center">$<%= (parseFloat((s.purPrice * Math.floor(s.investment / s.purPrice)).toFixed(2)) + parseFloat(((s.lastTrade - s.purPrice) *  Math.floor(s.investment / s.purPrice)).toFixed(2))).toFixed(2) %></p></td>
 
           <td class="center">
             <form action="/users/<%= port._id %>/stocks/<%= s._id %>?_method=DELETE" method="POST">

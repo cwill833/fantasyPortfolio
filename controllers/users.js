@@ -79,7 +79,8 @@ function sDelete (req, res){
   .then(person=>{
     let port = person.portfolio.id(req.params.id)
     let found = port.stock.id(req.params.idx)
-    port.usedC -= parseFloat(found.investment).toFixed(2)
+    let math = (parseFloat((found.purPrice * Math.floor(found.investment / found.purPrice)).toFixed(2)) + parseFloat(((found.lastTrade - found.purPrice) *  Math.floor(found.investment / found.purPrice)).toFixed(2))).toFixed(2) 
+    port.usedC -= math
     port.stock.remove(req.params.idx)
     person.save(()=>{
       res.redirect(`/users/${port._id}`)
