@@ -30,7 +30,7 @@
           <td><p class="center"><%= s.volume %></p></td>
           <td><p class="center"><%= s.date.toDateString() %></p></td>
           <td><p class="center"><%= Math.floor(s.investment / s.oPrice) %></p></td>
-          <td><p class="center">$<%= s.investment %></p></td>
+          <td><p class="center">$<%= parseFloat(s.oPrice * Math.floor(s.investment / s.oPrice)).toFixed(2) %></p></td>
           <td class="center"><form action="/users/<%= port._id %>/stocks/<%= s._id %>?_method=DELETE" method="POST">
               <input id="btn" type="submit" value="SELL">
           </form></td>
