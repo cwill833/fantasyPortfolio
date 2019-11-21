@@ -24,12 +24,13 @@ function refreash(req, res){
   .then(person=>{
     let port = person.portfolio.id(req.body.port)
     let found = port.stock.id(req.body.stock)
-    console.log(port, found)
-    // port.usedC -= parseFloat(found.investment).toFixed(2)
-    // port.stock.remove(req.params.idx)
-    // person.save(()=>{
-      res.redirect(`/users/${port._id}`)
-    // })
+    request(stockAPI + found.name + `&apikey=` + k, (err, responce, body)=>{
+      let data = JSON.parse(body)
+      found.lastTrade = data["Global Quote"]["05. price"]
+      person.save(()=>{
+        res.redirect(`/users/${port._id}`)
+      })
+    })
   })
 }
 
