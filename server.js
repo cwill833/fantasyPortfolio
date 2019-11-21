@@ -32,8 +32,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(express.static(path.join(__dirname, '/public')));
-app.use('/users', express.static(path.join(__dirname,'public')))
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/', express.static(path.join(__dirname,'public')))
 app.use('/users/:id', express.static(path.join(__dirname,'public')))
 app.use('/users/:id/stock', express.static(path.join(__dirname,'public')))
 
