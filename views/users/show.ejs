@@ -3,7 +3,7 @@
 <div class="container center">
   <p>Current portfolio: <span><%= port.name%></p></span>
   <p>Risk Tolerance: <span><%= port.risk%></p></span>
-  <p>Initial Investment: <span>$<%=port.inv%></p></span>
+  <p>Initial Investment: <span>$<%=parseFloat(port.inv).toFixed(2)%></p></span>
   <p>Remaining Capital: <span>$<%= (parseFloat(port.inv) - parseFloat(port.usedC)).toFixed(2) %></p></span>
   <p>Time Frame: <span><%= port.timeF%></p></span>
   <p>Stock in this portfolio: </p>
