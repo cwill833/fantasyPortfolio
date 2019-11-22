@@ -1,10 +1,10 @@
 # fantasyPortfolio
 
-[**Wireframe Home**](https://wireframe.cc/ohG1NM)
-[**Wireframe Questions**](https://wireframe.cc/umliqa)
-[**Wireframe portfolio**](https://wireframe.cc/INmTg5)
-[**Wireframe portfolio Show**](https://wireframe.cc/7jRl3l)
-[**ERD wireframe**](https://i.imgur.com/P4aNM70.jpg)
+[**Wireframe Home**](https://wireframe.cc/ohG1NM)  
+[**Wireframe Questions**](https://wireframe.cc/umliqa)  
+[**Wireframe portfolio**](https://wireframe.cc/INmTg5)  
+[**Wireframe portfolio Show**](https://wireframe.cc/7jRl3l)  
+[**ERD wireframe**](https://i.imgur.com/P4aNM70.jpg)  
 
 
 [**link to site**](https://dry-escarpment-82584.herokuapp.com/)
@@ -28,10 +28,11 @@ Lets see how far we get...
 
 Were we ended up was...  
 
-User can answer questions and it will build a portfolio with the parameters you set.  
+User can define their porfolio objectives.
 Once the portfolio appears you can click details to show it.  
-Once in the portfolio you can buy stocks with money in your account and it pulls live data from the API but does not update once set.  
-You can sell the stock and the money will update accordingly.  
+Once in the portfolio you can buy stocks with money in your account and it pulls live data from the API.
+User can update the last trade with the click of an update button which will also update the performance of the stock.  
+You can sell the stock and the account value will update accordingly.  
 
 This is what you see before you are able to answer questions and buy stock.  
 
@@ -39,7 +40,7 @@ This is what you see before you are able to answer questions and buy stock.
 
 Once logged in you are able to add a portfolio which will bring you to the questions page.  
 
-![Index Pafe](https://i.imgur.com/wVOGJc8.png)  
+![Index Page](https://i.imgur.com/wVOGJc8.png)  
 
 ![Questions Page](https://i.imgur.com/FawobZ4.png)  
 
@@ -63,12 +64,13 @@ For this project I incorporated:
  * mongoDB
  * mongoose
  * Materialize
- * a hole bunch of google/MDN/CSS Tricks :)
+ * Alpha Vantage API
 
 For Icebox items I plan on ...
 
-* Being able to track performance
-* Live investing
-* Streaming Quotes (if possible)
+* <strike>Being able to track performance</strike>
+* Incorporate some time of stock search due to the api only being able to use symbols.
+* Have a community side where the top portfolios live and a user can see what stock are in the portfolio.
+* 
 
 
