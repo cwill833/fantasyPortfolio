@@ -15,6 +15,10 @@ a{
   color: #00BBD4
 }
 
+button{
+  border-radius: 10px;
+}
+
 .input-field>label {
   color: #00BBD4;
   font-size: 1.3em;
@@ -36,6 +40,11 @@ a{
   color: white;
 }
 
+#btn:hover{
+  background-color: white;
+  color: red;
+}
+
 #block-edit{
   margin-top: 35px;
   margin-bottom: 20px;
@@ -45,6 +54,16 @@ a{
   margin-left: -12px;
 }
 
+.link-hov-g:hover{
+  color: rgb(11, 238, 37)
+}
+.link-hov-y:hover{
+  color: rgb(255, 255, 0)
+}
+.link-hov-b:hover{
+  color: rgb(39, 7, 250)
+}
+
 #middle{
   margin-left: 40px;
   margin-right: 40px;
@@ -52,4 +71,19 @@ a{
 
 #px{
   margin-left: 11px;
+}
+
+#refresh:hover{
+  animation-name: rotate;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+
+@keyframes rotate {
+  0% {
+    transfore: rotate(none);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
