@@ -71,6 +71,5 @@ For Icebox items I plan on ...
 * <strike>Being able to track performance</strike>
 * Incorporate some time of stock search due to the api only being able to use symbols.
 * Have a community side where the top portfolios live and a user can see what stock are in the portfolio.
-* 
 
 
